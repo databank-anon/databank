@@ -1,0 +1,37 @@
+{% extends 'template.html' %}
+
+{% block content %}
+<h5 class="card-header">Update event</h5>
+<div class="card-body">
+  <div class="card-text">
+    <form action="/update_event_do">
+      <div class="form-group mb-1">
+        <label for="title" class="form-label">Title</label>
+        <input type="text" name="title" id="title" value="{{ event.title }}" class="form-control">
+      </div>
+      <div class="form-group mb-1">
+        <label for="description" class="form-label">Description</label>
+        <input type="text" name="description" id="description" value="{{ event.description }}" class="form-control">
+      </div>
+      <div class="form-group mb-1">
+        <label for="location" class="form-label">Location</label>
+	{{ location | safe }}
+      </div>
+      <div class="form-group mb-1">
+        <label for="time" class="form-label">Time</label>
+        <input type="text" name="time" id="time" value="{{ event.time }}" class="form-control">
+      </div>
+      <div class="form-group mb-1">
+        <label for="time" class="form-label">Date</label>
+        <input type="text" name="date" id="date" value="{{ event.date }}" class="form-control">
+      </div>
+      <input type="hidden" name="owner" id="owner" value="{{ event.owner_id }}">
+      <input type="hidden" name="id_" id="id_" value="{{ event.id }}">
+      <input type="submit" value="Submit" class="btn btn-primary">
+    </form>
+  </div>
+</div>
+<div class="list-group list-group-flush">
+  <a class="list-group-item list-group-item-action list-group-item-dark" href="/event/{{ event.id }}">Back to event</a>
+</div>
+{% endblock %}

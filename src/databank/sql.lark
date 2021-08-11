@@ -1,0 +1,92 @@
+// help functions
+
+_list{x}: x (","i x)*
+
+// queries
+
+start: select_stmt | insert_stmt | delete_stmt //
+
+select_stmt: "SELECT"i result_columns from join* [where] [order_by] [limit]//
+
+insert_stmt: "INSERT"i "INTO"i NAME [column_list] values //
+
+delete_stmt: "DELETE"i "FROM"i NAME where //
+
+// terms
+
+literal_value: NUMERIC //
+             | STRING
+	     | BOOLEAN
+	     | NULL
+	     | CURRENT
+	     | PARAM
+
+// expressions
+
+var: NAME //
+col: NAME "."i NAME
+unop: UNOP expr //
+binop: expr BINOP expr //
+tuple: "("i _list{expr} ")"i //
+null_test: expr NULLTEST //
+between: expr "BETWEEN"i expr "AND"i expr //
+when: "WHEN"i expr "THEN"i expr //
+else: "ELSE"i expr //
+case: "CASE"i (when)+ [else] "END"i //
+join: JOIN_TYPE NAME "ON"i join_expr
+join_expr: col "="i col
+
+expr: literal_value //
+    | var
+    | col
+    | unop
+    | binop
+    | tuple
+    | null_test
+    | between
+    | case
+
+// additional operations
+
+ordering_term: expr [ORDER] [NULLS_ORDER] //
+order_by: "ORDER"i "BY"i _list{ordering_term} //
+from: "FROM"i NAME //
+where: "WHERE"i expr //
+limit: "LIMIT"i (NAT|PARAM) ["OFFSET"i (NAT|PARAM)] //
+
+// columns
+
+column_list: "("i _list{NAME} ")"i //
+result_columns: _list{expr} | STAR | COUNTSTAR | starred
+starred: NAME "."i STAR
+
+// values
+
+values: "VALUES"i "("i _list{expr} ")"i //
+
+// terminals
+
+NUMERIC: /[+-]?((\d+(\.\d*)?)|(\.\d+)|(0x[0-9A-F]+))(E[+-]?\d+)?/
+STRING: /'[^']*'/
+NAME: /[a-zA-Z][a-zA-Z0-9_-]*/
+PARAM: /\?\d+/
+NAT: /\d+/
+
+STAR: "*"i
+COUNTSTAR: "COUNT(*)"i
+
+UNOP: "-"i | "+"i | "~"i | "NOT"i
+BINOP: "||"i | "*"i | "/"i | "%"i | "+"i | "-"i | "<<"i | ">>"i | "&"i | "|"i | "<"i | "<="i | ">"i | ">="i | "="i | "=="i | "!="i | "<>"i | "IS"i | "IN"i | "AND"i | "OR"i
+
+BOOLEAN: "TRUE"i | "FALSE"i
+NULL: "NULL"i
+
+CURRENT: "CURRENT_TIME"i | "CURRENT_DATE"i | "CURRENT_TIMESTAMP"i
+
+ORDER: "ASC"i | "DESC"i
+NULLS_ORDER: "NULLS"i "FIRST"i | "NULLS"i "LAST"i
+NULLTEST: "ISNULL"i | "NOTNULL"i
+JOIN_TYPE: "JOIN"i | "INNER JOIN"i | "LEFT JOIN"i | "RIGHT JOIN"i | "FULL JOIN"i
+
+%import common.WS
+%ignore WS

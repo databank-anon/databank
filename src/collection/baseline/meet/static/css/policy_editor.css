@@ -1,0 +1,19 @@
+#editor {
+    font-family: monospace;
+    min-height: 100px;
+    background-color: beige;
+}
+
+.user {
+    color: blue;
+    font-family: monospace;
+}
+
+.app {
+    color: orange;
+    font-family: monospace;
+}
+
+.error {
+    color: red;
+}

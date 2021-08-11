@@ -1,0 +1,33 @@
+{% extends 'template.html' %}
+
+{% block content %}
+<h5 class="card-header">Moderators of category {{ name }}</h5>
+<div class="card-body">
+  <div class="card-text">
+    <table class="table">
+      <thead>
+        <tr><th>ID</th><th>Name</th><th>Actions</th></tr>
+      </thead>
+      <tbody>
+	{{ current }}
+      </tbody>
+    </table>
+  </div>
+</div>
+<div class="card-header">Add new moderators</div>
+<div class="card-body">
+  <div class="card-text">
+    <table class="table">
+      <thead>
+        <tr><th>ID</th><th>Name</th><th>Actions</th></tr>
+      </thead>
+      <tbody>
+	{{ new }}
+      </tbody>
+    </table>
+  </div>
+</div>
+<div class="list-group list-group-flush">
+  <a class="list-group-item list-group-item-action list-group-item-dark" href="/2/category/{{ cat }}">Back to category</a>
+</div>
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends 'template.html' %}
+
+{% block content %}
+<h5 class="card-header">Update category</h5>
+<div class="card-body">
+  <div class="card-text">
+    <form action="/update_category_do">
+      <input type="hidden" name="id_" id="id_" value="{{ category.id }}">
+      <div class="form-group mb-1">
+        <label for="name" class="form-label">Name</label>
+        <input type="text" name="name" id="name" value="{{ category.name }}" class="form-control">
+      </div>
+      <input type="submit" value="Submit" class="btn btn-primary">
+    </form>
+  </div>
+</div>
+<div class="list-group list-group-flush">
+  <a class="list-group-item list-group-item-action list-group-item-dark" href="/categories">Back to categories</a>
+</div>
+{% endblock %}

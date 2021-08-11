@@ -1,0 +1,45 @@
+{% extends 'template.html' %}
+
+{% block content %}
+<h5 class="card-header">Category {{ name }}</h5>
+{% if moderators %}
+<div class="card-header">Moderators</div>
+{{ modify }}
+<div class="card-body">
+  <div class="card-text">
+    <table class="table">
+      <thead>
+        <tr><th>ID</th><th>Name</th></tr>
+      </thead>
+      <tbody>
+	{{ moderators }}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endif %}
+{% if subscribers %}
+<div class="card-header">Subscribers</div>
+<div class="card-body">
+  <div class="card-text">
+    <table class="table">
+      <thead>
+        <tr><th>ID</th><th>Name</th></tr>
+      </thead>
+      <tbody>
+	{{ subscribers }}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endif %}
+<div class="card-header">Events</div>
+<div class="card-body">
+  <div class="card-text">
+    {{ events }}
+  </div>
+</div>
+<div class="list-group list-group-flush">
+  <a class="list-group-item list-group-item-action list-group-item-dark" href="/categories">Back to categories</a>
+</div>
+{% endblock %}

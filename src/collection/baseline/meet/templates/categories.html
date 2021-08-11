@@ -1,0 +1,29 @@
+{% extends 'template.html' %}
+
+{% block content %}
+<h5 class="card-header">Categories</h5>
+<div class="card-body">
+  <div class="card-text">
+    <table class="table">
+      <thead>
+        <tr><th>Name</th><th>Actions</th></tr>
+      </thead>
+      <tbody>
+	{{ table | safe }}
+      </tbody>
+    </table>
+  </div>
+</div>
+<div class="card-header">Add new category</div>
+<div class="card-body">
+  <div class="card-text">
+    <form action="/add_category">
+      <div class="form-group mb-1">
+        <label for="name" class="form-label">Name</label>
+        <input type="text" name="name" id="name" class="form-control">
+      </div>
+      <input type="submit" value="Submit" class="btn btn-primary">
+    </form>
+  </div>
+</div>
+{% endblock %}

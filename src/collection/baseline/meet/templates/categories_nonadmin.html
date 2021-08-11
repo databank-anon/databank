@@ -1,0 +1,17 @@
+{% extends 'template.html' %}
+
+{% block content %}
+<h5 class="card-header">Categories</h5>
+<div class="card-body">
+  <div class="card-text">
+    <table class="table">
+      <thead>
+        <tr><th>Name</th><th>Actions</th></tr>
+      </thead>
+      <tbody>
+	{{ categories }}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}

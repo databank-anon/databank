@@ -1,0 +1,10 @@
+*[~#]
+*.pyc
+state-*
+__pycache__
+*.cmi
+*.o
+*.cmx
+env
+monpoly/monpoly
+_build

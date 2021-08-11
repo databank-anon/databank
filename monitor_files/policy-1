@@ -1,0 +1,1 @@
+EXISTS u,l. Learns(u, l) AND NOT (u = "1") AND EXISTS f, v. ONCE(1209600,*) Inputs("2/add_event", f, l, v)

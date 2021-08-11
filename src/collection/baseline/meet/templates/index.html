@@ -1,0 +1,33 @@
+{% extends 'template.html' %}
+
+{% block content %}
+{% if user_id %}
+<div class="list-group list-group-flush">
+<a class="list-group-item list-group-item-action" href="/profile">Your profile</a>
+<a class="list-group-item list-group-item-action" href="/users">Users</a>
+<a class="list-group-item list-group-item-action" href="/categories">Categories</a>
+<a class="list-group-item list-group-item-action" href="/events">Events</a>
+<a class="list-group-item list-group-item-action" href="/locations">Locations</a>
+<a class="list-group-item list-group-item-action" href="/logout">Log out</a>
+</div>
+{% else %}
+<div class="card-body">
+  <div class="card-text">
+    <form action="/login" method="post">
+      <div class="form-group mb-1">
+	<label for="name">Username</label>
+	<input type="text" class="form-control" id="name_id" name="name">
+      </div>
+      <div class="form-group mb-1">
+	<label for="password">Password</label>
+	<input type="password" class="form-control" id="password_id" name="password">
+      </div>
+      <button type="submit" class="btn btn-primary">Log in</button>
+    </form>
+    {% if wrong_pass %}
+    <span class="badge bg-danger">Incorrect username/password pair</span>
+    {% endif %}      
+  </div>
+</div>
+{% endif %}
+{% endblock %}

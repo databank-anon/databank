@@ -1,0 +1,29 @@
+{% extends 'template.html' %}
+
+{% block content %}
+<h5 class="card-header">Profile</h5>
+<div class="card-header">My events</div>
+<div class="card-body">
+  <div class="card-text">
+    {{ owned_events | safe }}
+  </div>
+</div>
+<div class="card-header">Managed events</div>
+<div class="card-body">
+  <div class="card-text">
+    {{ managed_events | safe }}
+  </div>
+</div>
+<div class="card-header">Attended events</div>
+<div class="card-body">
+  <div class="card-text">
+    {{ attended_events | safe }}
+  </div>
+</div>
+<div class="card-header">Pending invitations</div>
+<div class="card-body">
+  <div class="card-text">
+    {{ invited_events | safe }}
+  </div>
+</div>
+{% endblock %}

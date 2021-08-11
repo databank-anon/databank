@@ -1,0 +1,14 @@
+{% extends 'template.html' %}
+
+{% block content %}
+<h5 class="card-header">Category {{ name }}</h5>
+<div class="card-header">Events</div>
+<div class="card-body">
+  <div class="card-text">
+    {{ events }}
+  </div>
+</div>
+<div class="list-group list-group-flush">
+  <a class="list-group-item list-group-item-action list-group-item-dark" href="/2/categories">Back to categories</a>
+</div>
+{% endblock %}

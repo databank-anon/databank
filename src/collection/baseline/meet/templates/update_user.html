@@ -1,0 +1,32 @@
+{% extends 'template.html' %}
+
+{% block content %}
+<h5 class="card-header">Update user</h5>
+<div class="card-body">
+  <div class="card-text">
+     <form action="/update_user_do">
+       <input type="hidden" name="id_" id="id_" value="{{ user.id }}">
+       <div class="form-group mb-1">
+         <label for="name" class="form-label">Name</label>
+         <input type="text" name="name" id="name" value="{{ user.name }}" class="form-control">
+       </div>
+       <div class="form-group mb-1">
+         <label for="level" class="form-label">Level</label>
+         <select name="level" class="form-select">
+           <option value=1 {{ free }}>Free</option>
+           <option value=2 {{ premium }}>Premium</option>
+           <option value=3 {{ administrator }}>Administrator</option>
+         </select>
+       </div>
+       <div class="form-group mb-1">
+         <label for="location" class="form-label">Location</label>
+	 {{ location_select_address | safe }}
+       </div>
+       <input type="submit" value="Submit" class="btn btn-primary">
+    </form>
+  </div>
+</div>
+<div class="list-group list-group-flush">
+  <a class="list-group-item list-group-item-action list-group-item-dark" href="/users">Back to users</a>
+</div>
+{% endblock %}

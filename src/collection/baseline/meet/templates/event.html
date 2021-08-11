@@ -1,0 +1,98 @@
+{% extends 'template.html' %}
+
+{% block content %}
+<h5 class="card-header">Event</h5>
+<div class="card-body">
+  <div class="card-text">
+    {{ event | safe }}
+  </div>
+</div>
+{% if managers %}
+<div class="card-header">Managers</div>
+<div class="card-body">
+  <div class="card-text">
+    <table class="table">
+      <thead>
+        <tr><th>ID</th><th>Name</th><th>Actions</th></tr>
+      </thead>
+      <tbody>
+	{{ managers | safe }}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endif %}
+{% if attendees %}
+<div class="card-header">Attendees</div>
+<div class="card-body">
+  <div class="card-text">
+    <table class="table">
+      <thead>
+        <tr><th>ID</th><th>Name</th><th>Actions</th></tr>
+      </thead>
+      <tbody>
+	{{ attendees | safe }}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endif %}
+{% if requesters %}
+<div class="card-header">Attendance requests</div>
+<div class="card-body">
+  <div class="card-text">
+    <table class="table">
+      <thead>
+        <tr><th>ID</th><th>Name</th><th>Actions</th></tr>
+      </thead>
+      <tbody>
+	{{ requesters | safe }}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endif %}
+{% if categories %}
+<div class="card-header">Categories</div>
+<div class="card-body">
+  <div class="card-text">
+    <table class="table">
+      <thead>
+        <tr><th>Name</th><th>Actions</th></tr>
+      </thead>
+      <tbody>
+	{{ categories | safe }}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endif %}
+{% if is_manager or is_moderator %}
+<div class="card-header">Actions</div>
+<div class="card-body">
+  <div class="card-text">
+    <a href="/update_event/{{ ev }}">Update</a>{% if is_manager %}&nbsp;<a href="/delete_event/{{ ev }}">Delete</a>{% endif %}<br>
+  </div>
+</div>
+{% endif %}
+{% if is_manager %}
+<div class="card-body">
+  <div class="card-text">
+    <form action="/invite/{{ ev }}" class="row">
+      <div class="col-auto">
+        <input type="text" readonly class="form-control-plaintext" value="Invite user with ID">
+      </div>
+      <div class="col-auto">
+        <input type="number" step=1 name="ID" id="ID" class="form-control">
+      </div>
+      <div class="col-auto">
+        <input type="submit" value="Submit" class="btn btn-primary">
+      </div>
+    </form>
+  </div>
+</div>
+{% endif %}
+<div class="list-group list-group-flush">
+  <a class="list-group-item list-group-item-action list-group-item-dark" href="/events">Back to events</a>
+</div>
+{% endblock %}

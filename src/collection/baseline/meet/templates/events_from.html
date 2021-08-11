@@ -1,0 +1,39 @@
+{% extends 'template.html' %}
+
+{% block content %}
+<h5 class="card-header">Events</h5>
+<div class="card-body">
+  <div class="card-text">
+    {{ events | safe }}
+  </div>
+</div>
+<div class="card-header">Add new event</div>
+<div class="card-body">
+  <div class="card-text">
+    <form action="/add_event">
+      <div class="form-group mb-1">
+        <label for="title" class="form-label">Title</label>
+        <input type="text" name="title" id="title" class="form-control">
+      </div>
+      <div class="form-group mb-1">
+        <label for="description" class="form-label">Description</label>
+        <input type="text" name="description" id="description" class="form-control">
+      </div>
+      <div class="form-group mb-1">
+        <label for="location" class="form-label">Location</label>
+	{{ location_select | safe }}
+      </div>
+      <div class="form-group mb-1">
+        <label for="time" class="form-label">Time</label>
+        <input type="text" name="time" id="time" class="form-control">
+      </div>
+      <div class="form-group mb-1">
+        <label for="date" class="form-label">Date</label>
+        <input type="text" name="date" id="date" class="form-control">
+      </div>
+      <input type="submit" value="Submit" class="btn btn-primary">
+    </form>
+  </div>
+</div>
+{% endblock %}
+ 

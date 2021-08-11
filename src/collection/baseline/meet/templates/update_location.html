@@ -1,0 +1,25 @@
+{% extends 'template.html' %}
+
+{% block content %}
+<h5 class="card-header">Update location</h5>
+<div class="card-body">
+  <div class="card-text">
+    <form action="/update_location_do">
+      <input type="hidden" name="id_" id="id_" value="{{ location.id }}">
+      <input type="hidden" name="owner" id="owner" value="{{ location.owner_id }}">
+      <div class="form-group mb-1">
+        <label for="country" class="form-label">Country</label>
+        <input type="text" name="country" id="country" value="{{ location.country }}" class="form-control">
+      </div>
+      <div class="form-group mb-1">
+        <label for="name" class="form-label">Name</label>
+        <input type="text" name="name" id="name" value="{{ location.name }}" class="form-control">
+      </div>
+      <input type="submit" value="Submit" class="btn btn-primary">
+    </form>
+  </div>
+</div>
+<div class="list-group list-group-flush">
+  <a class="list-group-item list-group-item-action list-group-item-dark" href="/2/locations">Back to locations</a>
+</div>
+{% endblock %}

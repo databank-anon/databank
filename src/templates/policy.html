@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/policy_editor.css') }}">
+        
+    <title>The Databank</title>
+  </head>
+  <body>
+
+    <header class="navbar navbar-light" id="navbar">
+      <div class="container-fluid">
+	<a class="navbar-brand" href="/">
+	  The Databank
+	</a>
+      </div>
+    </header>
+    
+    <div class="container">
+      <div class="row">
+	<div class="col-sm-8 offset-sm-2">
+	  <div class="card">
+	    <h5 class="card-header">Your policy</h5>
+	    <div class="card-header">Current policy</div>
+	    <div class="card-body">
+	      <div class="card-text" style="font-family: monospace">
+		{{ policy }}
+	      </div>
+	    </div>
+	    <div class="card-header">New policy</div>
+	    <div class="card-body">
+	      <div class="card-title">
+		You can enter a new policy below. Use IDs of users and applications.
+	      </div>
+	      <div class="card-text" id="editor" contentEditable="true" oninput="process()">
+		{{ policy }}
+	      </div>
+	    </div>
+	    <div class="card-footer" id="status">
+	      Your new policy is checked. You can now <a href="javascript:save()">save</a> it.
+	    </div>
+	  </div>
+	</div>
+      </div>
+    </div>
+    
+    <script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/policy_editor.js') }}"></script>
+  </body>
+</html>

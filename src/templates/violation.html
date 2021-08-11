@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+        
+    <title>The Databank</title>
+  </head>
+  <body>
+
+    <header class="navbar navbar-light" id="navbar">
+      <div class="container-fluid">
+	<a class="navbar-brand" href="/">
+	  The Databank
+	</a>
+      </div>
+    </header>
+    
+    <div class="container">
+      <div class="row">
+	<div class="col-sm-8 offset-sm-2">
+	  <div class="card">
+	    <h5 class="card-header" >Stopped execution to avoid a violation!</h5>
+	    <div class="card-body">
+	      <div class="card-text">
+		Detected potential violation of user <strong>{{ stop.user_id }}</strong>'s policy.
+	      </div>
+	    </div>
+	  </div>
+	</div>
+      </div>
+    </div>
+    
+    <script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
+  </body>
+</html>
